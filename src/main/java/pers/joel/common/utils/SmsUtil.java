@@ -2,7 +2,7 @@ package pers.joel.common.utils;
 
 import com.zhenzi.sms.ZhenziSmsClient;
 
-public class SmsUtils {
+public class SmsUtil {
 
     private static String apiUrl = "https://sms_developer.zhenzikj.com";
     private static String appId = "101013";

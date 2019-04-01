@@ -33,8 +33,8 @@ import java.util.*;
  * @since 1.0
  */
 @SuppressWarnings("unchecked")
-public final class JSONUtils {
-    private transient static final Logger logger = LoggerFactory.getLogger(JSONUtils.class);
+public final class JSONUtil {
+    private transient static final Logger logger = LoggerFactory.getLogger(JSONUtil.class);
 
     private static final ObjectMapper uiObjectMapper = new ObjectMapper();
 
@@ -352,7 +352,7 @@ public final class JSONUtils {
     public static <T> List<Map<String, Object>> list2ListMapPartially(List<T> list, String... properties) {
         List<Map<String, Object>> resultList = new ArrayList<>();
         for (T o : list) {
-            resultList.add(JSONUtils.object2MapPartially(o, properties));
+            resultList.add(JSONUtil.object2MapPartially(o, properties));
         }
         return resultList;
     }
@@ -382,7 +382,7 @@ public final class JSONUtils {
     public static <T> List<Map<String, Object>> list2ListMapPartially2(List<T> list, String... properties) {
         List<Map<String, Object>> resultList = new ArrayList<>();
         for (T o : list) {
-            resultList.add(JSONUtils.object2MapPartially2(o, properties));
+            resultList.add(JSONUtil.object2MapPartially2(o, properties));
         }
         return resultList;
     }

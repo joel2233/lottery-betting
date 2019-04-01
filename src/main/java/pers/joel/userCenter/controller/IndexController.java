@@ -15,4 +15,10 @@ public class IndexController extends BaseController {
         getRequest().setAttribute("title","万艾彩票");
         return "index";
     }
+
+    @RequestMapping({"/error-404","/error-400","/error-500"})
+    public String toErrorPage(){
+        return ERROR;
+    }
+
 }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import pers.joel.common.services.UserManager;
-import pers.joel.common.utils.JSONUtils;
+import pers.joel.common.utils.JSONUtil;
 import pers.joel.userCenter.models.UcUser;
 
 import javax.servlet.http.HttpServletRequest;
@@ -56,8 +56,10 @@ public abstract class BaseController{
     public static String companyTemplateName = "";
     protected static final String AJAX = "ajax";
     protected static final String HEADER = "header";
+    protected static final String ERROR = "/common/error";
     protected static final String RESULT = "result";
     protected static final String MESSAGE = "message";
+    protected static final String ERRORMESSAGE = "errmsg";
     protected static final String MOBILE_MESSAGE = "mobile_message";
     protected static final String MESSAGE2C = "message2c";
 
@@ -90,6 +92,9 @@ public abstract class BaseController{
 
     protected void saveMessage(String msg) {
         getRequest().setAttribute(MESSAGE, msg);
+    }
+    protected void saveErrorMessage(String msg) {
+        getRequest().setAttribute(ERRORMESSAGE, msg);
     }
 
     protected void saveMessage(String msg, String extraMsg) {
@@ -190,7 +195,7 @@ public abstract class BaseController{
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("result", 0);
             map.put("message", "您没有权限 ！！");
-            saveMessage(JSONUtils.toJson(map));
+            saveMessage(JSONUtil.toJson(map));
             return false;
         } else {
             return true;

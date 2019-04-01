@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pers.joel.common.controller.BaseController;
 import pers.joel.common.services.UserManager;
-import pers.joel.common.utils.JSONUtils;
-import pers.joel.common.utils.SmsUtils;
+import pers.joel.common.utils.JSONUtil;
+import pers.joel.common.utils.SecurityUtil;
+import pers.joel.common.utils.SmsUtil;
 import pers.joel.smsCenter.daos.SmsRecordDao;
 import pers.joel.smsCenter.models.SmsRecord;
 import pers.joel.userCenter.models.UcUser;
@@ -89,7 +90,7 @@ public class RegisterController extends BaseController {
         }
         try {
             String content = "验证码为: " + verifyCode + ",请在页面输入完成验证，如非本人操作请忽略。";
-            String result = SmsUtils.sendMessage(phone,content);
+            String result = SmsUtil.sendMessage(phone,content);
             //插入sms_record
             SmsRecord smsRecord = new SmsRecord();
             smsRecord.setUid(user.getUid());
@@ -98,8 +99,8 @@ public class RegisterController extends BaseController {
             smsRecord.setSendTime(LocalDateTime.now());
 
 
-            String resultCode = JSONUtils.readJson2Map(result).get("code").toString();
-            String resultMsg = JSONUtils.readJson2Map(result).get("data").toString();
+            String resultCode = JSONUtil.readJson2Map(result).get("code").toString();
+            String resultMsg = JSONUtil.readJson2Map(result).get("data").toString();
 
             smsRecord.setResult(result==""?SmsRecord.SMS_RESULT_FAULT:(resultCode.equals("0")?SmsRecord.SMS_RESULT_SUCCESS:SmsRecord.SMS_RESULT_FAILURE));
             smsRecord.setDescription(resultMsg);
@@ -173,7 +174,8 @@ public class RegisterController extends BaseController {
         String uname = getRequest().getParameter("uname");
         String pwd = getRequest().getParameter("pwd");
         try{
-            userManager.updateUserInfo(uid,uname,pwd);
+            String securityPwd = SecurityUtil.aesEncrypt(pwd,SecurityUtil.AESPASSWORD);
+            userManager.updateUserInfo(uid,uname,securityPwd);
             map.put("result","1");
             map.put("uname",uname);
         }catch (Exception e){
@@ -182,17 +184,16 @@ public class RegisterController extends BaseController {
         return map;
     }
 
+    /**
+     *  设置随机字符
+     * @return
+     */
     public String generateVerifyCode() {
         int codeLength = 6;
         String code = "";
-        //设置随机字符
         Random random = new Random();
-        //循环codeLength 我设置的4就是循环4次
         for (int i = 0; i < codeLength; i++) {
-
             code += random.nextInt(10);
-            //将拼接好的字符串赋值给展示的Value
-
         }
         return code;
     }

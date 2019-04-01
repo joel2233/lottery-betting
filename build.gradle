@@ -31,7 +31,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-devtools')
     compile('net.sf.json-lib:json-lib:2.4:jdk15')
 
-    compile('org.apache.shiro:shiro-web:1.4.0')
+    compile('org.apache.shiro:shiro-spring:1.4.0')
     compile('org.apache.commons:commons-lang3:3.8.1')
 
     compile('org.slf4j:jcl-over-slf4j:1.7.25')
