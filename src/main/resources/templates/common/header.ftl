@@ -12,10 +12,19 @@
             <li><a>tab5</a></li>
         </ul>
     </div>
+
     <div class="header-right fright">
-        <ul>
-            <li><a href="/user/toLogin" target="_blank"><i class="fa fa-user-o"></i> 请登录</a></li>
-            <li><a href="/user/register/toRegister" target="_blank"><i class="fa fa-pencil-square-o"></i> 免费注册</a></li>
-        </ul>
+        <@shiro.guest>
+            <ul>
+                <li><a href="/user/toLogin" target="_blank"><i class="fa fa-user-o"></i> 请登录</a></li>
+                <li><a href="/user/register/toRegister" target="_blank"><i class="fa fa-pencil-square-o"></i> 免费注册</a></li>
+            </ul>
+        </@shiro.guest>
+        <@shiro.user>
+            <ul>
+                <li><a href="#" target="_blank"><i class="fa fa-user-o"></i> <@shiro.principal property="uname"/></a></li>
+                <li><a href="/user/logout"><i class="fa fa-sign-out"></i> 退出</a></li>
+            </ul>
+        </@shiro.user>
     </div>
 </div>

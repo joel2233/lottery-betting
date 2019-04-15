@@ -1,4 +1,5 @@
-*{padding: 0;margin: 0;font-size: 14px;font-family: Consolas;}
+*{padding: 0;margin: 0;font-size: 14px;font-family: Consolas;user-select:none;}
+html{position: relative;}
 a{text-decoration: none;color:#444;}
 li{list-style: none;}
 ruby{font-weight: bold;}
@@ -7,7 +8,8 @@ rt{font-size: 12px;color:blue;}
 .fright{float: right;}
 .clearfix:after{content: "";display: table;clear:both;}
 
-.header{height: 90px;width: 100%;background-color: #f2f2f9;box-shadow: 0 10px 20px 0 #f1f1f1;}
+.center{margin: 0 auto;width:80%;}
+.header{height: 90px;width: 100%;box-shadow: 0 10px 20px 0 #f1f1f1;}
 .header-left{width:250px;margin-left: 30px;height: 100%;}
 .logo{display: inline-block;width:90%;height:100%;background: url("../imgs/logo.png") no-repeat 40% 80%;background-size: 90%;}
 .header-nav{width:60%;margin: 52px auto 0;height: 30px;}
@@ -20,16 +22,36 @@ rt{font-size: 12px;color:blue;}
 .hide{display: none;}
 
 .main{max-height: 70%;margin: 0 50px 0 10%;width:90%;}
+.main .content{margin-bottom: 200px;}
 .main-left{width:10%;float:left;margin-top: 30px;line-height: 30px;text-indent: 1em;}
 .main-content li{display: inline-block;line-height: 30px;text-indent: 2em;}
 .main-left li a,.main-content li a{display:inline-block;width:120px;height: 30px;text-align: left;border:1px solid #f0f0f0;}
 .main-right{width:10%;}
 .main-content{width:80%;}
-.footer{height: 200px;position: fixed;margin-bottom: 0;}
+.footer{
+    position: absolute;
+    bottom: 0;
+    margin: 0 10%;
+    border-top: 1px solid #e8e8e8;
+    padding-bottom: 10px;
+    color: #666;
+    margin-top: 20px;
+    padding-top: 6px;
+    font-size: 12px;
+    background: #fff;
+    width: 80%;
+    height: 100px;}
+.footer .f-link {
+    color: #ccc;
+    text-align: center;
+    width: 1180px;
+    margin: 0 auto 30px;
+    line-height: 24px;
+}
 
 .li-on{background-color: #e5e5e5;}
 
-.info{width:90%;margin: 28px;min-width:1360px;}
+.info{width:90%;margin: 28px;min-height: 750px;}
 .info .item{height: 80px;}
 .info span{display: inline-block;text-align: center;}
 .info .item-no,.info .item-type{width:10%;}
@@ -37,9 +59,75 @@ rt{font-size: 12px;color:blue;}
 .info .item-date,.info .item-home,.info .item-away,.info .bet-more-btn{width:15%;}
 .info-title{background-color: #68A4ED;}
 .info-title{height: 50px;line-height: 50px;border: 1px solid lightgrey;border-top:none;}
-.item{height: 50px;border: 1px solid lightgrey;margin-top: -1px;}
+.item{height: 50px;border: 1px solid lightgrey;}
 .item:hover{background-color: #e5e5e5;}
 
+/*-- 体彩投注区样式开始  --*/
+.bet-zone{z-index:20;position:fixed;bottom: 0;width:80%;height:auto;border: 1px solid #8c8c8c;box-shadow: 10px 10px 10px 2px #8c8c8c;padding: 15px;background-color: aliceblue;}
+.bet-zone .topZone{line-height: 50px;height: 50px;margin-bottom: 15px;border-bottom: 1px solid #c0c0c0;}
+.bet-zone .bet-select{display:inline-block;border: 1px solid cornflowerblue;width: 80px;height: 40px;text-align: center;line-height: 40px;margin-right: 50px;}
+.bet-zone #selectedCount{color:red;font-weight: bold;font-size: 18px;}
+.bet-btn-selected{background: none!important;background-color: #3C8EE4!important;}
 
+.bet-zone .detail{display: inline-block;min-width:60px;height: 30px;line-height: 30px;text-align:center;margin-left:15px;border:1px solid #c0c0c0;}
+.bet-zone .bet-way .way-item{display: inline-block;margin-right:16px; cursor: pointer;}
+.chkbox{
 
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    vertical-align: -2px;
+    font-size: 0;
+    background-position: 0 -30px;
+    -webkit-user-select: none;
+    user-select: none;
+    border: 1px solid;
+}
+.chkbox-on{background:url("/imgs/chkboxon.png") no-repeat;background-size: 15px 15px;border-color:#1E7DDF;}
+.bet-total{margin-right: 16px;}
+.numsel {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 130px;
+    vertical-align: middle;
+}
+.bei-jian,.bei-jia{cursor:pointer;display: inline-block;width:30px;height: 30px;line-height: 30px;text-align: center;border:1px solid #b0b0b0;color:#b0b0b0;font-size: 30px;}
+.bei-show{
+    display: inline-block;
+    width: 42px;
+    height: 30px;
+    vertical-align: top;
+    border-width: 1px 0;
+    border-color: #E0E0E0;
+    border-style: solid;
+}
+.bei-show #buy_bs{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    line-height: 25px;
+    text-align: center;
+    font-size: 16px;
+    color: #15212c;
+    border: 0;
+}
 
+.toggleBtn{position: absolute;top:-25px;right:15px;}
+/*.show-bet-zone{*/
+    /*animation: toggle 1s;*/
+/*}*/
+/*@keyframes toggle {*/
+    /*0%{height: auto;}*/
+    /*100%{height: 0;}*/
+/*}*/
+
+.bet-zone i{font-size: 20px;font-weight: bold;}
+/*-- 体彩投注区样式结束 --*/
+
+/*-- 登录页面样式开始 --*/
+.form{border:1px solid;padding: 20px 40px 10px 40px;margin: 80px 200px 0 50px;background-color: #4e698e;color:#fff;}
+.form a{color:#fff;}
+.form input[type=text],.form input[type=password]{width:18em;height: 3em;text-indent: 1em;margin: 6px 0;border:none;}
+
+/*-- 登录页面样式结束 --*/

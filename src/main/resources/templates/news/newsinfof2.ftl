@@ -18,13 +18,15 @@
 </head>
 <body>
     <#include "../common/header.ftl" encoding="utf-8" parse=true>
+    <input type="hidden" value="2" id="lotteryType"/>
+    <input type="hidden" value="竞彩足球" id="lotteryName"/>
     <div class="main">
         <div class="content clearfix">
             <div class="main-left fleft">
                 <div class="sports">
                     <ul class="sports-ul">
-                        <li class="li-item"><a class="li-on" href="/news/footNews">足彩</a></li>
-                        <li class="li-item"><a href="/news/basketNews?id=b1">篮彩</a></li>
+                        <li class="li-item"><a class="li-on" href="/news/footNews">竞彩足球</a></li>
+                        <li class="li-item"><a href="/news/basketNews?id=b1">竞彩篮球</a></li>
                     </ul>
                 </div>
             </div>
@@ -51,7 +53,7 @@
                     </div>
                     <div class="info-content">
                         <#list itemlist! as li>
-                            <div class="item">
+                            <div class="item" id="${li.id!}">
                                 <span class="item-no">${li.weekday!}</span>
                                 <span class="item-type">${li.type!}</span>
                                 <span class="item-date">${li.date!?substring(5)}</span>
@@ -64,14 +66,14 @@
                                 <#list li?keys as key>
                                     <#assign k = key?replace("zero","0")?replace("win","胜")?replace("lose","负")?replace("even","平")?replace("other","其它")?replace("one","1")?replace("two","2")?replace("three","3")?replace("four","4")?replace("five","5")?replace("six","6")?replace("_",":")>
                                     <#if key != 'id' && key != 'date' && key != 'weekday' && key != 'type' && key != 'home' && key != 'away'>
-                                    <span class="bet-btn" data-v="${li[key]!}" data-s="${k}"><ruby>${li[key]!}<rt>${k} </rt></ruby></span>
+                                    <span class="bet-btn ruby" data-v="${li[key]!}" data-s="${k}"><ruby>${li[key]!}<rt>${k}</rt></ruby></span>
                                     </#if>
                                     <#if key = 'win_other' || key = 'even_other' || key = 'lose_other'><br/></#if>
                                 </#list>
                             </div>
                         </#list>
                         <#if itemlist?size = 0>
-                            <span colspan="10" style="height:50px;line-height:35px;text-align:center;font-size:16px;background:white;">暂无赛事</span>
+                            <span style="height:50px;line-height:35px;text-align:center;font-size:16px;background:white;">暂无赛事</span>
                         </#if>
                     </div>
                 </div>
@@ -80,14 +82,13 @@
 
             </div>
         </div>
+        <#include "../common/betzone.ftl" encoding="utf-8" parse=true>
     </div>
-    <#include "../common/footer.ftl" encoding="utf-8" parse=true>
-
-    <script type="text/javascript" src="/js/common.js"></script>
+    <#--<#include "../common/footer.ftl" encoding="utf-8" parse=true>-->
 <script type="text/javascript">
     $(".bet-more-btn").on("click",function () {
-        var btn = $(this);
-        var info = $(this).closest(".item").next(".bet-more-info");
+        let btn = $(this);
+        let info = $(this).closest(".item").next(".bet-more-info");
         if(info.hasClass("hide")){
             btn.html("收起投注");
         }else {

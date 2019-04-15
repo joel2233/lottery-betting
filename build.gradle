@@ -18,8 +18,6 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.0'
-    runtimeOnly 'org.springframework.boot:spring-boot-devtools'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
@@ -30,7 +28,12 @@ dependencies {
     //热部署
     compile('org.springframework.boot:spring-boot-devtools')
     compile('net.sf.json-lib:json-lib:2.4:jdk15')
+    compile('org.springframework:spring-jdbc:4.3.21.RELEASE')
+    compile('org.springframework:spring-tx:4.3.21.RELEASE')
 
+    implementation("org.apache.shiro:shiro-core:1.4.0",
+            "org.apache.shiro:shiro-ehcache:1.4.0",
+            "org.apache.shiro:shiro-web:1.4.0")
     compile('org.apache.shiro:shiro-spring:1.4.0')
     compile('org.apache.commons:commons-lang3:3.8.1')
 
@@ -41,7 +44,10 @@ dependencies {
 
     compile("org.apache.httpcomponents:httpcore:4.4.10")
     compile("org.apache.httpcomponents:httpclient:4.5.6")
+
+    compile('net.mingsoft:shiro-freemarker-tags:0.1')
     
     compile('org.springframework.boot:spring-boot-starter-freemarker')
+    compile('org.springframework.boot:spring-boot-starter-cache')
     compile fileTree(dir:'libs',include:['*.jar'])
 }

@@ -28,13 +28,15 @@
 </head>
 <body>
     <#include "../common/header.ftl" encoding="utf-8" parse=true>
+    <input type="hidden" value="2" id="lotteryType"/>
+    <input type="hidden" value="竞彩足球" id="lotteryName"/>
     <div class="main">
         <div class="content clearfix">
             <div class="main-left fleft">
                 <div class="sports">
                     <ul class="sports-ul">
-                        <li class="li-item"><a class="li-on" href="/news/footNews">足彩</a></li>
-                        <li class="li-item"><a href="/news/basketNews?id=b1">篮彩</a></li>
+                        <li class="li-item"><a class="li-on" href="/news/footNews">竞彩足球</a></li>
+                        <li class="li-item"><a href="/news/basketNews?id=b1">竞彩篮球</a></li>
                     </ul>
                 </div>
             </div>
@@ -69,29 +71,28 @@
                         </div>
                         <div class="info-content">
                         <#list itemlist! as li>
-                            <div class="item">
+                            <div class="item" id="${li.id!}">
                                 <span class="fleft item-no">${li.weekday!}</span>
                                 <span class="fleft item-type">${li.type!}</span>
                                 <span class="fleft item-date">${li.date!?substring(5)}</span>
                                 <span class="fleft item-home">${li.home!}</span>
                                 <span class="fleft">VS</span>
                                 <span class="fleft item-away">${li.away!}</span>
-                                <span class="fleft item-span bet-btn">${li.win_win!}</span>
-                                <span class="fleft item-span bet-btn">${li.win_even!}</span>
-                                <span class="fleft item-span bet-btn">${li.win_lose!}</span>
-                                <span class="fleft item-span bet-btn">${li.even_win!}</span>
-                                <span class="fleft item-span bet-btn">${li.even_even!}</span>
-                                <span class="fleft item-span bet-btn">${li.even_lose!}</span>
-                                <span class="fleft item-span bet-btn">${li.lose_win!}</span>
-                                <span class="fleft item-span bet-btn">${li.lose_even!}</span>
-                                <span class="fleft item-span bet-btn">${li.lose_lose!}</span>
+                                <span class="fleft item-span bet-btn" data-v="${li.win_win!}">${li.win_win!}</span>
+                                <span class="fleft item-span bet-btn" data-v="${li.win_even!}">${li.win_even!}</span>
+                                <span class="fleft item-span bet-btn" data-v="${li.win_lose!}">${li.win_lose!}</span>
+                                <span class="fleft item-span bet-btn" data-v="${li.even_win!}">${li.even_win!}</span>
+                                <span class="fleft item-span bet-btn" data-v="${li.even_even!}">${li.even_even!}</span>
+                                <span class="fleft item-span bet-btn" data-v="${li.even_lose!}">${li.even_lose!}</span>
+                                <span class="fleft item-span bet-btn" data-v="${li.lose_win!}">${li.lose_win!}</span>
+                                <span class="fleft item-span bet-btn" data-v="${li.lose_even!}">${li.lose_even!}</span>
+                                <span class="fleft item-span bet-btn" data-v="${li.lose_lose!}">${li.lose_lose!}</span>
                             </div>
                         </#list>
                         </div>
 
                         <#if itemlist?size = 0>
-                            <span colspan="10" 
-                                  style="height:50px;line-height:35px;text-align:center;font-size:16px;background:white;">暂无赛事</span>
+                            <span style="height:50px;line-height:35px;text-align:center;font-size:16px;background:white;">暂无赛事</span>
                         </#if>
                 </div>
             </div>
@@ -99,8 +100,9 @@
 
             </div>
         </div>
+        <#include "../common/betzone.ftl" encoding="utf-8" parse=true>
     </div>
-    <#include "../common/footer.ftl" encoding="utf-8" parse=true>
-    <script type="text/javascript" src="../js/common.js"></script>
+    <#--<#include "../common/footer.ftl" encoding="utf-8" parse=true>-->
+
 </body>
 </html>

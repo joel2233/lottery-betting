@@ -16,18 +16,23 @@
         .item>.it{line-height: 80px;}
         .item-span .t-item{width:100%;height: 50%;line-height: 40px;box-sizing: border-box;}
         .item-span .bet-btn{background:url("/imgs/btn-bg.png");font-weight: bold;color:#444;border:1px solid #fff;}
+        .item-span .notsale{background-color: #e8e8e8;width: 310%;border:1px solid #f0f0f0;}
         .item-span .bet-btn:hover{border:1px solid #3C8EE4;cursor: pointer;}
+        .bet-span{display:inline-block;width:30%;height: 50%;}
+        .bet-span .bet-btn{display: inline-block;width:30%;line-height: 40px;cursor: pointer;}
     </style>
 </head>
 <body>
     <#include "../common/header.ftl" encoding="utf-8" parse=true>
+    <input type="hidden" value="2" id="lotteryType"/>
+    <input type="hidden" value="竞彩足球" id="lotteryName"/>
     <div class="main">
         <div class="content clearfix">
             <div class="main-left fleft">
                 <div class="sports">
                     <ul class="sports-ul">
-                        <li class="li-item"><a class="li-on" href="/news/footNews">足彩</a></li>
-                        <li class="li-item"><a href="/news/basketNews?id=b1">篮彩</a></li>
+                        <li class="li-item"><a class="li-on" href="/news/footNews">竞彩足球</a></li>
+                        <li class="li-item"><a href="/news/basketNews?id=b1">竞彩篮球</a></li>
                     </ul>
                 </div>
             </div>
@@ -57,29 +62,40 @@
                     </div>
                     <div class="info-content">
                         <#list itemlist! as li>
-                            <div class="item">
+                            <div class="item" id="${li.weekday!}">
                                 <span class="fleft it item-no">${li.weekday!}</span>
                                 <span class="fleft it item-type">${li.type!}</span>
                                 <span class="fleft it item-date">${li.date!?substring(5)}</span>
                                 <span class="fleft it item-home">${li.home!}</span>
                                 <span class="fleft it">VS</span>
                                 <span class="fleft it item-away">${li.away!}</span>
-                                <span class="item-span">
-                                    <span class="t-item">0</span>
-                                    <span class="t-item">${li.letBall!}</span>
+                                <span class="fleft item-span">
+                                    <span class="t-item ball0">0</span>
+                                    <span class="t-item ball1">${li.letBall!}</span>
                                 </span>
-                                <span class="item-span">
-                                    <span class="t-item bet-btn">${li.noLetWin!}</span>
-                                    <span class="t-item bet-btn">${li.letWin!}</span>
-                                </span>
-                                <span class="item-span">
-                                    <span class="t-item bet-btn">${li.noLetEven!}</span>
-                                    <span class="t-item bet-btn">${li.letEven!}</span>
-                                </span>
-                                <span class="item-span">
-                                    <span class="t-item bet-btn">${li.noLetLose!}</span>
-                                    <span class="t-item bet-btn">${li.letLose!}</span>
-                                </span>
+                                <#if li.noLetWin != "未开售">
+                                    <span class="fleft bet-span nolet">
+                                        <span tid="no1" class="bet-btn" data-v="${li.noLetWin!}">${li.noLetWin!}</span>
+                                        <span tid="no2" class="bet-btn" data-v="${li.noLetEven!}">${li.noLetEven!}</span>
+                                        <span tid="no3" class="bet-btn" data-v="${li.noLetLose!}">${li.noLetLose!}</span>
+                                    </span>
+                                    <span class="fleft bet-span let">
+                                        <span tid="l1" class="bet-btn" data-v="${li.letWin!}">${li.letWin!}</span>
+                                        <span tid="l2" class="bet-btn" data-v="${li.letEven!}">${li.letEven!}</span>
+                                        <span tid="l3" class="bet-btn" data-v="${li.letLose!}">${li.letLose!}</span>
+                                    </span>
+                                <#else>
+                                    <span class="fleft bet-span nolet">
+                                        <span style="display:inline-block;width:96%;height: 40px;line-height: 40px;background-color: #f0f0f0" data-v="${li.noLetWin!}">${li.noLetWin!}</span>
+                                        <span class="" data-v="${li.noLetEven!}">${li.noLetEven!}</span>
+                                        <span class="" data-v="${li.noLetLose!}">${li.noLetLose!}</span>
+                                    </span>
+                                    <span class="fleft bet-span let">
+                                        <span tid="l1" class="bet-btn" data-v="${li.letWin!}">${li.letWin!}</span>
+                                        <span tid="l2" class="bet-btn" data-v="${li.letEven!}">${li.letEven!}</span>
+                                        <span tid="l3" class="bet-btn" data-v="${li.letLose!}">${li.letLose!}</span>
+                                    </span>
+                                </#if>
                             </div>
                         </#list>
                         <#if itemlist?size = 0>
@@ -92,14 +108,10 @@
 
             </div>
         </div>
+        <#include "../common/betzone.ftl" encoding="utf-8" parse=true>
     </div>
-    <#include "../common/footer.ftl" encoding="utf-8" parse=true>
-
-
-<script type="text/javascript">
-    $(".foot-li").on("click",function () {
-
-    })
-</script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/footbet.js"></script>
+<script type="text/javascript" src="/js/calculate.js"></script>
 </body>
 </html>

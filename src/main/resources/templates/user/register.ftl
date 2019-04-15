@@ -4,24 +4,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>注册会员-万艾</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <#--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">-->
     <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
     <style type="text/css">
-        .header{height: 100px;box-shadow: 0 10px 20px 0 #f1f1f1;}
-        .clearfix:after{content: "";display: table;clear: both;}
         .wrapper{margin-top: 30px;}
         h3{font-size: 15px;}
-        .footer{    border-top: 1px solid #e8e8e8;
-            padding-bottom: 10px;
-            color: #666;
-            margin-top: 20px;
-            padding-top: 6px;
-            font-size: 12px;
-            background: #fff;
-            width: auto;
-            /*margin: 0 auto;*/
-            font-family: Microsoft YaHei;
-            text-align: center;}
+
         .inner{width:1080px;margin: 0 auto;padding: 30px 50px;}
         .reg-con{min-height: 480px;height: auto;}
         .step-con-box{width:440px;margin: 0 auto;}
@@ -188,9 +178,7 @@
     </style>
 </head>
 <body>
-    <div class="header clearfix">
-
-    </div>
+    <#include "../common/header.ftl" encoding="utf-8" parse=true>
     <div class="wrapper clearfix">
         <div class="inner">
             <div class="reg-con clearfix">
@@ -289,8 +277,7 @@
             </div>
         </div>
     </div>
-    <div class="footer"></div>
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <#--<#include "../common/footer.ftl" encoding="utf-8" parse=true>-->
     <script type="text/javascript">
         //格式化手机号
         $("#phone").bind("input propertychange",function(){
