@@ -3,10 +3,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>体彩咨讯-万艾</title>
-    <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.css"/>
-    <link rel="stylesheet" href="/css/common.css"/>
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <title>体彩-万艾</title>
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css"/>
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/common.css"/>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
     <style type="text/css">
         .info .item-no, .info .item-type {width: 10%;}
         .info .item-date, .info .item-home, .info .item-away, .info .bet-more-btn {width: 10%;}

@@ -4,11 +4,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>体彩咨讯-万艾</title>
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.css"/>
     <link rel="stylesheet" href="/css/common.css"/>
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
-
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script src="/bootstrap/bootstrap.min.js"></script>
     <style type="text/css">
+        body{position: relative;}
         .info .item{height: 80px;}
         .info .item-no, .info .item-type {width: 8%;}
         .info .item-date, .info .item-home, .info .item-away, .info .bet-more-btn {width: 10%;}
@@ -27,7 +29,7 @@
     <input type="hidden" value="2" id="lotteryType"/>
     <input type="hidden" value="竞彩足球" id="lotteryName"/>
     <div class="main">
-        <div class="content clearfix">
+        <div class="content container clearfix">
             <div class="main-left fleft">
                 <div class="sports">
                     <ul class="sports-ul">
@@ -109,9 +111,12 @@
             </div>
         </div>
         <#include "../common/betzone.ftl" encoding="utf-8" parse=true>
+        <#--<#include "../common/loginform.ftl" encoding="utf-8" parse=true>-->
     </div>
 <script type="text/javascript" src="/js/common.js"></script>
 <script type="text/javascript" src="/js/footbet.js"></script>
 <script type="text/javascript" src="/js/calculate.js"></script>
+<script>
+</script>
 </body>
 </html>

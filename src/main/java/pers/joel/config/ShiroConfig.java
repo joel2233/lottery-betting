@@ -5,12 +5,10 @@ import org.apache.shiro.cache.MemoryConstrainedCacheManager;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.realm.Realm;
-import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
-import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -19,10 +17,6 @@ import pers.joel.config.realms.UserRealm;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- * @author ZHAO
- * @date 2019/1/8 17:49
- */
 @Configuration
 @Import(ShiroManager.class)
 public class ShiroConfig {
@@ -36,7 +30,7 @@ public class ShiroConfig {
         // 必须设置 SecurityManager
         shiroFilter.setSecurityManager(securityManager);
         //认证拦截后跳转到登录页面
-        shiroFilter.setLoginUrl("/user/login");
+        shiroFilter.setLoginUrl("/user/toLogin");
         // 登录成功后跳转到首页
         shiroFilter.setSuccessUrl("/index");
         // 未授权界面;
@@ -50,6 +44,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/order/**", "authc");
         filterChainDefinitionMap.put("/templates/**", "anon");
         filterChainDefinitionMap.put("/static/**", "anon");
+        filterChainDefinitionMap.put("/userCenter/**", "authc");
         shiroFilter.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilter;
     }
@@ -80,14 +75,14 @@ public class ShiroConfig {
 //        return shiroFilterFactoryBean;
 //    }
 
-    @Bean
-    public SessionManager sessionManager(){
-        DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
-        sessionManager.setSessionValidationSchedulerEnabled(true);
-        sessionManager.setSessionIdCookieEnabled(false);
-        sessionManager.setGlobalSessionTimeout(2*3600000);
-        return sessionManager;
-    }
+//    @Bean
+//    public SessionManager sessionManager(){
+//        DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
+//        sessionManager.setSessionValidationSchedulerEnabled(true);
+//        sessionManager.setSessionIdCookieEnabled(false);
+//        sessionManager.setGlobalSessionTimeout(2*3600000);
+//        return sessionManager;
+//    }
 //    @Bean
 //    public SecurityManager securityManager(SessionManager sessionManager) {
 //        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
@@ -120,7 +115,7 @@ public class ShiroConfig {
         //这个参数是cookie的名称
         SimpleCookie simpleCookie = new SimpleCookie("rememberMe");
         //<!-- 记住我cookie生效时间30天 ,单位秒;-->
-        simpleCookie.setMaxAge(259200);
+        simpleCookie.setMaxAge(259200000);
         return simpleCookie;
     }
 

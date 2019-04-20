@@ -9,14 +9,10 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import pers.joel.common.services.UserManager;
 import pers.joel.common.utils.SecurityUtil;
-import pers.joel.userCenter.models.UcUser;
+import pers.joel.models.UcUser;
+import pers.joel.services.UserManager;
 
-/**
- * @author ZHAO
- * @date 2019/1/8 18:22
- */
 public class UserRealm extends AuthorizingRealm {
 
 

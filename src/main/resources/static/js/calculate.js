@@ -1,6 +1,7 @@
 
 
 function getPrice() {
+
     let notes = 0;
     let details = [];
     items.forEach((item,index) => {

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>会员登录-万艾</title>
     <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/semantic.min.css">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/common.css">
     <script src="/js/jquery.min.js"></script>
     <style type="text/css">
@@ -12,28 +12,8 @@
     </style>
 </head>
 <body>
-<div class="header clearfix">
-    <div class="header-left fleft"><a class="logo" href="/"></a></div>
-    <div class="header-nav fleft">
-        <ul>
-            <li><a href="/">首页</a></li>
-            <li class="sports-lottery-li">
-                <a href="/news/footNews">体彩资讯</a>
-            </li>
-            <li><a>tab2</a></li>
-            <li><a>tab3</a></li>
-            <li><a>tab4</a></li>
-            <li><a>tab5</a></li>
-        </ul>
-    </div>
-    <#--<div class="header-right fright">-->
-        <#--<ul>-->
-            <#--<li><a href="/user/toLogin" target="_blank"><i class="fa fa-user-o"></i> 请登录</a></li>-->
-            <#--<li><a href="/user/register/toRegister" target="_blank"><i class="fa fa-pencil-square-o"></i> 免费注册</a></li>-->
-        <#--</ul>-->
-    <#--</div>-->
-</div>
-<div class="center">
+<#include "../common/header.ftl" encoding="utf-8" parse=true>
+<div class="content">
     <#--<div>-->
 
     <#--</div>-->
@@ -51,7 +31,7 @@
             </div>
             <p class="fleft" style="height: 20px;line-height: 20px;">
                 <label for="rememberMe">
-                    <input type="checkbox" id="rememberMe" name="rememberMe" value="1" checked="checked" style="width:15px;height: 15px;"/>
+                    <input type="checkbox" id="rememberMe" name="rememberMe" value="1" style="width:15px;height: 15px;"/>
                     <span>记住我</span>
                 </label>
             </p>

@@ -1,4 +1,4 @@
-<div class="bet-zone clearfix">
+<div class="bet-zone fixed-bottom container clearfix">
     <span class="toggleBtn"><a href="javascript:void(0);" onclick="toggleBetZone()"><i class="fa fa-angle-double-down"></i></a></span>
     <div class="topZone">
         <div>
@@ -7,16 +7,14 @@
             </div>
 
             <div class="bet-way fleft">
-                <span>过关方式:</span>
-                <span class="tip" style="color:red;font-weight: bold;">至少选择两场比赛</span>
-                <#--<span class="way-item hide"><span class="chkbox" data-value="2串1" data-disabled="0"></span>2串1</span>-->
-                <#--<span class="way-item hide"><span class="chkbox" data-value="3串1" data-disabled="0"></span>3串1</span>-->
-                <#--<span class="way-item hide"><span class="chkbox" data-value="4串1" data-disabled="0"></span>4串1</span>-->
+                <span class="tipspan">过关方式:</span>
+                <span class="tip" data-toggle="tooltip" data-placement="top" title="" style="color:red;font-weight: bold;">
+                    至少选择两场比赛
+                </span>
             </div>
 
-            <div class="top-btn fright"><a href="javascript:void(0);" onclick="window.scrollTo('0','0');">回顶部</a></div>
+            <div class="top-btn fright"><a href="javascript:void(0);" onclick="javascript:$('body,html').animate({scrollTop:0},500);">回顶部</a></div>
         </div>
-
     </div>
     <div class="mainZone">
         <div id="bet-info">

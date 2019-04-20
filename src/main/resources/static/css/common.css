@@ -1,5 +1,13 @@
-*{padding: 0;margin: 0;font-size: 14px;font-family: Consolas;user-select:none;}
+*{padding: 0;margin: 0;font-size: 14px;font-family: Consolas;}
+
+@media (min-width: 1200px){
+    .container {
+        max-width: 1500px;
+    }
+}
+
 html{position: relative;}
+body{margin-bottom: 120px;}
 a{text-decoration: none;color:#444;}
 li{list-style: none;}
 ruby{font-weight: bold;}
@@ -8,46 +16,17 @@ rt{font-size: 12px;color:blue;}
 .fright{float: right;}
 .clearfix:after{content: "";display: table;clear:both;}
 
-.center{margin: 0 auto;width:80%;}
-.header{height: 90px;width: 100%;box-shadow: 0 10px 20px 0 #f1f1f1;}
-.header-left{width:250px;margin-left: 30px;height: 100%;}
-.logo{display: inline-block;width:90%;height:100%;background: url("../imgs/logo.png") no-repeat 40% 80%;background-size: 90%;}
-.header-nav{width:60%;margin: 52px auto 0;height: 30px;}
-.header-nav li a{display: inline-block;margin-left:3px;width:80px;text-align: center;height: 30px;line-height: 30px;}
-.header-nav li:hover{background-color: #99999966;}
-.header li{list-style: none;display: inline-block;}
-.header-right{line-height: 30px;margin:52px 90px 0 0;height: 30px;}
-.header-right li a{display: inline-block;width:80px;text-align: center;}
-.header-right li a:hover{color:orange;}
+.tcenter{text-align: center;}
 .hide{display: none;}
 
-.main{max-height: 70%;margin: 0 50px 0 10%;width:90%;}
-.main .content{margin-bottom: 200px;}
+.main{margin-top: 80px;}
+.main .container{margin-bottom: 200px;}
 .main-left{width:10%;float:left;margin-top: 30px;line-height: 30px;text-indent: 1em;}
-.main-content li{display: inline-block;line-height: 30px;text-indent: 2em;}
-.main-left li a,.main-content li a{display:inline-block;width:120px;height: 30px;text-align: left;border:1px solid #f0f0f0;}
+.main-content li{display: inline-block;line-height: 30px;}
+.main-left li a,.main-content li a{display:inline-block;width:120px;height: 30px;text-align: center;border:1px solid #f0f0f0;}
 .main-right{width:10%;}
 .main-content{width:80%;}
-.footer{
-    position: absolute;
-    bottom: 0;
-    margin: 0 10%;
-    border-top: 1px solid #e8e8e8;
-    padding-bottom: 10px;
-    color: #666;
-    margin-top: 20px;
-    padding-top: 6px;
-    font-size: 12px;
-    background: #fff;
-    width: 80%;
-    height: 100px;}
-.footer .f-link {
-    color: #ccc;
-    text-align: center;
-    width: 1180px;
-    margin: 0 auto 30px;
-    line-height: 24px;
-}
+
 
 .li-on{background-color: #e5e5e5;}
 
@@ -131,3 +110,35 @@ rt{font-size: 12px;color:blue;}
 .form input[type=text],.form input[type=password]{width:18em;height: 3em;text-indent: 1em;margin: 6px 0;border:none;}
 
 /*-- 登录页面样式结束 --*/
+
+
+/*#loginDiv{*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*bottom: 0;*/
+    /*background-color: rgba(0,0,0,0.4);*/
+/*}*/
+
+/* 大乐透页面样式开始 */
+.red{color:red;}
+.blue{color:blue;}
+.gray{color:#a5a5a5;}
+
+/* 大乐透页面样式结束 */
+
+
+/*用户管理界面样式开始 */
+.leftnav{border:1px solid #f0f0f0;width: 10%;min-width: 92px;background-color: #fbfbfb;}
+.leftnav .nav-title{height: 40px;line-height: 40px;border-top:1px dotted;width: 100%;text-align: center;}
+.leftnav .nav-item{height: 40px;line-height: 40px;width: 100%;text-align: center;}
+
+.right-container{width:85%;margin-left: 1%;}
+.right-container .rTitle{width:100%;border:1px solid #e5e5e5;border-radius: 3px;height: 30px;background-color: #fbfbfb;line-height:30px;font-weight:bold;text-indent: 2em;}
+.right-container .rContent{width:100%;border:1px solid #e5e5e5;border-radius: 3px;min-height: 500px;background-color: #fbfbfb;margin: 20px 0;padding: 2em;}
+
+
+/* 用户管理界面样式结束 */

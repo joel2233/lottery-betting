@@ -9,6 +9,4 @@ public class LotteryBettingApplication {
     public static void main(String[] args) {
         SpringApplication.run(LotteryBettingApplication.class, args);
     }
-
-
 }
