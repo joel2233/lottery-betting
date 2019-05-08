@@ -132,7 +132,3 @@ function getMaxBonus(a) {
     return 2 * maxB * beishu;
 }
 
-function sortNumber(a,b)
-{
-    return a - b;
-}

@@ -192,7 +192,15 @@ $('.bet-way').on('click','.way-item',function () {
 });
 
 function toggleBetZone() {
-   $('.bet-zone').find('div').toggle(500);
+   $('.bet-zone').toggleClass('hidedown');
+   $('.bet-zone').find('div').toggle(500,function () {
+
+      if($('.bet-zone').hasClass('hidedown')){
+         $('.bet-zone').animate({padding:0},0);
+      }else {
+         $('.bet-zone').animate({padding:15},0);
+      }
+   });
    $('.toggleBtn').find('i').toggleClass('fa-angle-double-up');
    $('.toggleBtn').find('i').toggleClass('fa-angle-double-down');
 }
@@ -220,4 +228,10 @@ function formatMoney(num) {
       num = num.substring(0,num.length-(4*i+3))+','+
           num.substring(num.length-(4*i+3));
    return (((sign)?'':'-') + num + '.' + cents);
+}
+
+
+function sortNumber(a,b)
+{
+   return a - b;
 }

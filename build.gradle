@@ -26,6 +26,7 @@ dependencies {
     compile 'com.alibaba:druid-spring-boot-starter:1.1.10'
 
     //热部署
+    compile('org.springframework:springloaded:1.2.6.RELEASE')
     compile('org.springframework.boot:spring-boot-devtools')
     compile('net.sf.json-lib:json-lib:2.4:jdk15')
     compile('org.springframework:spring-jdbc:4.3.21.RELEASE')

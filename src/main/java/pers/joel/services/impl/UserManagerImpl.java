@@ -50,4 +50,25 @@ public class UserManagerImpl implements UserManager {
     public void updateUserInfo(int uid, String uname, String pwd){
         userDao.updateUserInfo(uid, uname, pwd);
     }
+
+//    @Override
+//    public void updateUserMoney(int uid, Double monery) {
+//
+////        userDao.updateUserMoney(uid, bonus);
+////        updateCache();
+//    }
+
+//    public void updateCache(){
+//        UcUser u = getCurrentUser();
+//        boolean rememberMe = false;
+//        for (Cookie cookie : getRequest().getCookies()) {
+//            if ("rememberMe".equals(cookie.getName())) {
+//                rememberMe = true;
+//            }
+//        }
+//        UsernamePasswordToken token = new UsernamePasswordToken(u.getPhone(), SecurityUtil.aesDecrypt(u.getPassword(),SecurityUtil.AESPASSWORD),rememberMe);
+//
+//        SecurityUtils.getSubject().logout();
+//        SecurityUtils.getSubject().login(token);
+//    }
 }

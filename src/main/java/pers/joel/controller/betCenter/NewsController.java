@@ -6,17 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import pers.joel.common.utils.FormatDateTimeMethodModel;
 import pers.joel.common.utils.HttpUtil;
 import pers.joel.common.utils.JSONUtil;
 import pers.joel.controller.BaseController;
 import pers.joel.models.ApiChannel;
 import pers.joel.models.BetOrder;
+import pers.joel.models.LotteryResult;
 import pers.joel.services.NewsManager;
 import pers.joel.services.OrderManager;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 @Controller
 @RequestMapping("/news")
@@ -99,7 +104,9 @@ public class NewsController extends BaseController {
 
         betOrder.setLotteryType(Integer.parseInt(getRequest().getParameter("lotteryType")));
         betOrder.setLotteryName(getRequest().getParameter("lotteryName"));
+        betOrder.setCode(getRequest().getParameter("code"));
         betOrder.setDetail(getRequest().getParameter("detail"));
+        betOrder.setNote(Integer.parseInt(getRequest().getParameter("note")));
         betOrder.setTotal(Double.valueOf(getRequest().getParameter("total")));
         betOrder.setUid(getCurrentUid());
         betOrder.setState(BetOrder.ORDER_VALID);
@@ -109,11 +116,11 @@ public class NewsController extends BaseController {
         try{
             int orderId = orderManager.insert(betOrder);
             map.put("result","1");
-            map.put("msg","投注成功");
+            map.put("msg","保存成功");
         }catch (Exception e){
             log.error("生成投注单",transformExceptionMessage(e));
-            map.put("result","0");
-            map.put("msg","生成投注单");
+            map.put("result","2");
+            map.put("msg","生成投注单异常");
         }
         return map;
     }
@@ -121,6 +128,115 @@ public class NewsController extends BaseController {
 
     @RequestMapping("letou")
     public String toLeTou(){
+        LotteryResult thisResult = newsManager.getLatestLotteryResult(LotteryResult.DALETOU);
+        LotteryResult lastResult = newsManager.getLastLotteryResult(LotteryResult.DALETOU);
+
+        getRequest().setAttribute("lastResult",lastResult);
+        getRequest().setAttribute("thisResult",thisResult);
+        getRequest().setAttribute("formatTime",new FormatDateTimeMethodModel());
+
         return "news/letou";
+    }
+
+    @RequestMapping("tossq")
+    public String tossq(){
+        LotteryResult thisResult = newsManager.getLatestLotteryResult(LotteryResult.SHUANGSEQIU);
+        LotteryResult lastResult = newsManager.getLastLotteryResult(LotteryResult.SHUANGSEQIU);
+
+        getRequest().setAttribute("lastResult",lastResult);
+        getRequest().setAttribute("thisResult",thisResult);
+        getRequest().setAttribute("formatTime",new FormatDateTimeMethodModel());
+        return "news/ssq";
+    }
+
+    @RequestMapping("tofu3d")
+    public String tofu3d(){
+        LotteryResult thisResult = newsManager.getLatestLotteryResult(LotteryResult.FUCAI3D);
+        LotteryResult lastResult = newsManager.getLastLotteryResult(LotteryResult.FUCAI3D);
+
+        getRequest().setAttribute("lastResult",lastResult);
+        getRequest().setAttribute("thisResult",thisResult);
+        getRequest().setAttribute("formatTime",new FormatDateTimeMethodModel());
+        return "news/fu3d";
+    }
+
+    @RequestMapping("wf11x5")
+    public String wf11x5(){
+//        LotteryResult lastResult = newsManager.getLastElevenFive(LotteryResult.WUFEN);
+        LotteryResult thisResult = newsManager.getLatestLotteryResult(LotteryResult.WUFEN);
+
+        if(thisResult.getEndTime().isBefore(LocalDateTime.now())) {
+            LotteryResult neweFive = new LotteryResult();
+            String newCode = "";
+            if (thisResult.getBeginTime().toLocalDate().isEqual(LocalDate.now())) {
+                newCode = String.valueOf(Integer.valueOf(thisResult.getCode().substring(5)) + 1);
+                newCode = thisResult.getCode().substring(0, 5).concat(newCode);
+            } else {
+                newCode = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")) + "001";
+            }
+            neweFive.setCode(newCode);
+            neweFive.setResult(randomResult(1,11));
+            neweFive.setBeginTime(LocalDateTime.now());
+            neweFive.setEndTime(LocalDateTime.now().plusMinutes(5));
+            neweFive.setType(LotteryResult.WUFEN);
+
+            newsManager.insertNewLotteryResult(neweFive);
+            thisResult = newsManager.getLatestLotteryResult(LotteryResult.WUFEN);
+        }
+        LotteryResult lastResult = newsManager.getLastLotteryResult(LotteryResult.WUFEN);
+
+        getRequest().setAttribute("lastResult",lastResult);
+        getRequest().setAttribute("thisResult",thisResult);
+        getRequest().setAttribute("formatTime",new FormatDateTimeMethodModel());
+        return "news/wf11x5";
+    }
+
+    @RequestMapping("gd11x5")
+    public String gd11x5(){
+        LotteryResult thisResult = newsManager.getLatestLotteryResult(LotteryResult.GUANGDONG);
+        if(thisResult.getEndTime().isBefore(LocalDateTime.now()) && LocalDateTime.now().getHour() >= 9 && LocalDateTime.now().getHour() <= 23){
+
+            LotteryResult neweFive = new LotteryResult();
+            String newCode = "";
+            if(thisResult.getBeginTime().toLocalDate().isEqual(LocalDate.now())){
+                newCode = String.valueOf(Integer.valueOf(thisResult.getCode().substring(5))+1);
+                newCode = thisResult.getCode().substring(0,5).concat(newCode);
+            }else {
+                newCode = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"))+"501";
+            }
+
+            neweFive.setCode(newCode);
+            neweFive.setResult(randomResult(1,11));
+            neweFive.setBeginTime(LocalDateTime.now());
+            neweFive.setEndTime(LocalDateTime.now().plusMinutes(20));
+            neweFive.setType(LotteryResult.GUANGDONG);
+
+            newsManager.insertNewLotteryResult(neweFive);
+            thisResult = newsManager.getLatestLotteryResult(LotteryResult.GUANGDONG);
+        }
+        LotteryResult lastResult = newsManager.getLastLotteryResult(LotteryResult.GUANGDONG);
+        getRequest().setAttribute("lastResult",lastResult);
+        getRequest().setAttribute("thisResult",thisResult);
+        getRequest().setAttribute("formatTime",new FormatDateTimeMethodModel());
+        return "news/gd11x5";
+    }
+
+    private static String randomResult(int min,int max) {
+        Random ran = new Random();
+        String result = "";
+
+        for(int i = 1;i < 6;i++){
+            int num = ran.nextInt(max) + min;
+            System.out.println("第"+ i +"个随机数 =="+num);
+            if(result.indexOf(String.valueOf(num)) != -1){
+                i--;
+                continue;
+            }
+            result +=  String.valueOf(num);
+            if(i != 5){
+                result += ",";
+            }
+        }
+        return result;
     }
 }

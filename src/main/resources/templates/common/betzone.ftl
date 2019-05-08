@@ -1,4 +1,4 @@
-<div class="bet-zone fixed-bottom container clearfix">
+<div class="bet-zone fixed-bottom center clearfix">
     <span class="toggleBtn"><a href="javascript:void(0);" onclick="toggleBetZone()"><i class="fa fa-angle-double-down"></i></a></span>
     <div class="topZone">
         <div>
@@ -41,7 +41,7 @@
             <span class="bet-price" style="padding-right: 20px;">金额:<span class="price">0</span>元</span>
             <span class="bet-bonus">预计奖金:<span class="bonus">0</span>元</span>
         </div>
-        <div>
+        <div style="margin-top: 20px;">
             <a id="saveBtn" href="javascript:void(0);">保存方案</a>
             <a id="doBet" href="javascript:void(0);">生成投注单</a>
         </div>

@@ -76,4 +76,12 @@ public class UserRealm extends AuthorizingRealm {
             }
         }
     }
+
+    /**
+     * 清空缓存
+     * */
+    public void clearCache(){
+        PrincipalCollection principals = SecurityUtils.getSubject().getPrincipals();
+        super.clearCache(principals);
+    }
 }

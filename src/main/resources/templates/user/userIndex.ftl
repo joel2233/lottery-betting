@@ -21,7 +21,7 @@
 <div class="main ">
     <div class="container clearfix">
         <#include "common/leftnav.ftl" encoding="utf-8" parse=true>
-        <div class="right-container fleft">
+        <div class="r-container fleft">
             <div class="rTitle">个人信息</div>
             <div class="rContent">
                 <nav class="userInfo">

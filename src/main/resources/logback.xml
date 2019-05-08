@@ -6,9 +6,9 @@
 		</encoder>
 	</appender>
 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${catalina.home}/logs/B.log</file>
+		<file>D:/22222/logs/B.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>${catalina.home}/logs/B.%d{yyyy-MM}.%i.log.zip</fileNamePattern>
+			<fileNamePattern>D:/22222/logs/B.%d{yyyy-MM}.%i.log.zip</fileNamePattern>
 			<maxFileSize>20MB</maxFileSize>
 			<maxHistory>6</maxHistory>
 		</rollingPolicy>

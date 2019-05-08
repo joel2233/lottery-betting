@@ -4,12 +4,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>注册会员-万艾</title>
-    <#--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">-->
-    <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css" type="text/css"/>
-    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.css"/>
+    <link type="text/css" rel="stylesheet" href="/css/common.css"/>
     <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/bootstrap/bootstrap.min.js"></script>
     <style type="text/css">
-        .wrapper{margin-top: 30px;}
         h3{font-size: 15px;}
 
         .inner{width:1080px;margin: 0 auto;padding: 30px 50px;}
@@ -179,100 +179,102 @@
 </head>
 <body>
     <#include "../common/header.ftl" encoding="utf-8" parse=true>
-    <div class="wrapper clearfix">
-        <div class="inner">
-            <div class="reg-con clearfix">
-                <div class="step-box">
-                    <ul class="steps clearfix">
-                        <li class="li1">
-                            <div class="step-item">
-                                <h3 class="step-title">验证手机</h3>
-                                <span class="step-point"></span>
-                                <span class="step-point-after"></span>
-                            </div>
-                        </li>
-                        <li class="step-line li2"></li>
-                        <li class="li3">
-                            <div class="step-item">
-                                <h3 class="step-title">填写账户信息</h3>
-                                <span class="step-point"></span>
-                                <span class="step-point-after hide"></span>
-                            </div>
-                        </li>
-                        <li class="step-line li4"></li>
-                        <li class="li5">
-                            <div class="step-item">
-                                <h3 class="step-title">完成注册</h3>
-                                <span class="step-point"></span>
-                                <span class="step-point-after hide"></span>
-                            </div>
-                        </li>
+    <div class="main clearfix">
+        <div class="container">
+            <div class="inner">
+                <div class="reg-con clearfix">
+                    <div class="step-box">
+                        <ul class="steps clearfix">
+                            <li class="li1">
+                                <div class="step-item">
+                                    <h3 class="step-title">验证手机</h3>
+                                    <span class="step-point"></span>
+                                    <span class="step-point-after"></span>
+                                </div>
+                            </li>
+                            <li class="step-line li2"></li>
+                            <li class="li3">
+                                <div class="step-item">
+                                    <h3 class="step-title">填写账户信息</h3>
+                                    <span class="step-point"></span>
+                                    <span class="step-point-after hide"></span>
+                                </div>
+                            </li>
+                            <li class="step-line li4"></li>
+                            <li class="li5">
+                                <div class="step-item">
+                                    <h3 class="step-title">完成注册</h3>
+                                    <span class="step-point"></span>
+                                    <span class="step-point-after hide"></span>
+                                </div>
+                            </li>
 
-                    </ul>
+                        </ul>
 
-                </div>
-                <div class="step-con-box" id="step1">
-                    <form action class="reg-form">
-                        <div class="field-group">
-                            <input type="tel" maxlength="13" class="field-input radius" name="phone" id="phone" placeholder="手机号"/>
-                            <input type="hidden" id="truephone"/>
-                            <div class="field-error"></div>
-                        </div>
-                        <div class="field-group" id="vcode">
-                            <input type="text" disabled="true" class="field-input vcode-ipt radius" maxlength="6" id="phonecode" placeholder="输入6位短信验证码">
-                            <button type="button" class="btn btn-vcode disabled">获取验证码</button>
-                            <div class="field-error"></div>
-                        </div>
-                        <div class="field-group">
-                            <a href="javascript:void(0);" class="btn btn-primary radius block disabled js-step1">下一步</a>
-                        </div>
-                    </form>
-                </div>
-                <div class="step-con-box hide" id="step2">
-                    <form action class="reg-form">
-                        <div class="field-group">
-                            <input type="text" minlength="4" maxlength="16" class="field-input radius" name="username" id="username" placeholder="4~16位用户名"/>
-                            <div class="field-error"></div>
-                        </div>
-                        <div class="field-group">
-                            <input type="password" minlength="6" maxlength="20" class="field-input radius" name="pwd" id="pwd" placeholder="设置6~20位密码"/>
-                            <i class="fa fa-eye show_pwd"></i>
-                            <div class="field-error"></div>
-                        </div>
-                        <div class="field-group">
-                            <input type="password" minlength="6" maxlength="20" class="field-input radius" name="confirmpwd" id="confirmpwd" placeholder="确认密码"/>
-                            <i class="fa fa-eye show_pwd"></i>
-                            <div class="field-error"></div>
-                        </div>
-                        <div class="field-group">
-                            <input type="hidden" id="uid"/>
-                            <a href="javascript:void(0);" class="btn btn-primary radius block js-step2">下一步</a>
-                        </div>
-                    </form>
-                </div>
-                <div class="step-con-box hide" id="step3">
-                    <form action class="reg-form">
-                        <div class="field-group">
-                            <span class="tips">注册完成,您可以使用账户用户名或手机号登录</span>
-                            <ul class="user-info">
-                                <li>
-                                    <label for="g_uname">用户名：</label>
-                                    <span id="g_uname"></span>
-                                </li>
-                                <li>
-                                    <label for="g_phone">手机：</label>
-                                    <span id="g_phone"></span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="field-group">
-                            <a href="javascript:void(0)" class="btn btn-light radius block" id="finishReg">完成注册</a>
-                        </div>
-                    </form>
-                </div>
-                <div class="step-con-box" id="login_span">
-                    <span>已有账号,</span>
-                    <a href="/user/toLogin">去登录></a>
+                    </div>
+                    <div class="step-con-box" id="step1">
+                        <form action class="reg-form">
+                            <div class="field-group">
+                                <input type="tel" maxlength="13" class="field-input radius" name="phone" id="phone" placeholder="手机号"/>
+                                <input type="hidden" id="truephone"/>
+                                <div class="field-error"></div>
+                            </div>
+                            <div class="field-group" id="vcode">
+                                <input type="text" disabled="true" class="field-input vcode-ipt radius" maxlength="6" id="phonecode" placeholder="输入6位短信验证码">
+                                <button type="button" class="btn btn-vcode disabled">获取验证码</button>
+                                <div class="field-error"></div>
+                            </div>
+                            <div class="field-group">
+                                <a href="javascript:void(0);" class="btn btn-primary radius block disabled js-step1">下一步</a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="step-con-box hide" id="step2">
+                        <form action class="reg-form">
+                            <div class="field-group">
+                                <input type="text" minlength="4" maxlength="16" class="field-input radius" name="username" id="username" placeholder="4~16位用户名"/>
+                                <div class="field-error"></div>
+                            </div>
+                            <div class="field-group">
+                                <input type="password" minlength="6" maxlength="20" class="field-input radius" name="pwd" id="pwd" placeholder="设置6~20位密码"/>
+                                <i class="fa fa-eye show_pwd"></i>
+                                <div class="field-error"></div>
+                            </div>
+                            <div class="field-group">
+                                <input type="password" minlength="6" maxlength="20" class="field-input radius" name="confirmpwd" id="confirmpwd" placeholder="确认密码"/>
+                                <i class="fa fa-eye show_pwd"></i>
+                                <div class="field-error"></div>
+                            </div>
+                            <div class="field-group">
+                                <input type="hidden" id="uid"/>
+                                <a href="javascript:void(0);" class="btn btn-primary radius block js-step2">下一步</a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="step-con-box hide" id="step3">
+                        <form action class="reg-form">
+                            <div class="field-group">
+                                <span class="tips">注册完成,您可以使用账户用户名或手机号登录</span>
+                                <ul class="user-info">
+                                    <li>
+                                        <label for="g_uname">用户名：</label>
+                                        <span id="g_uname"></span>
+                                    </li>
+                                    <li>
+                                        <label for="g_phone">手机：</label>
+                                        <span id="g_phone"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="field-group">
+                                <a href="javascript:void(0)" class="btn btn-light radius block" id="finishReg">完成注册</a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="step-con-box" id="login_span">
+                        <span>已有账号,</span>
+                        <a href="/user/toLogin">去登录></a>
+                    </div>
                 </div>
             </div>
         </div>

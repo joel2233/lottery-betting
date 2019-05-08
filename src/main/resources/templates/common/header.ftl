@@ -16,14 +16,18 @@
                     <a class="nav-link" href="/news/letou">大乐透</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download">Dropdown <span class="caret"></span></a>
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download">福彩 <span class="caret"></span></a>
                     <div class="dropdown-menu" aria-labelledby="download">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
-                        <a class="dropdown-item" href="#">One more separated link</a>
+                        <a class="dropdown-item" href="/news/tossq">双色球</a>
+                        <a class="dropdown-item" href="/news/tofu3d">福彩3D</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download2">高频彩 <span class="caret"></span></a>
+                    <div class="dropdown-menu" aria-labelledby="download2">
+                        <a class="dropdown-item" href="/news/wf11x5">5分11选5</a>
+                        <a class="dropdown-item" href="/news/gd11x5">广东11选5</a>
                     </div>
                 </li>
             </ul>

@@ -18,8 +18,16 @@ public class BetOrder {
     private int state; //方案是否有效（过期） 1-有效 0-无效
     private LocalDateTime createTime; //订单创建时间
     private LocalDateTime expireTime; //方案过期时间
+    private LocalDateTime payTime; //订单支付时间
+    private int note; //注数
     private int payState; //订单支付状态 0-未支付 1-已支付
     private Double total; //订单总额
+    private String code; //期号
+    private int end; //标识当期投注是否截止
+    private LotteryResult lotteryResult; //本期开奖结果
+    private int calFlag; //是否计算过奖金
+    private int prize;
+    private Double bonus;
 
     public int getOrderId() {
         return orderId;
@@ -99,5 +107,69 @@ public class BetOrder {
 
     public void setTotal(Double total) {
         this.total = total;
+    }
+
+    public int getNote() {
+        return note;
+    }
+
+    public void setNote(int note) {
+        this.note = note;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public LocalDateTime getPayTime() {
+        return payTime;
+    }
+
+    public void setPayTime(LocalDateTime payTime) {
+        this.payTime = payTime;
+    }
+
+    public LotteryResult getLotteryResult() {
+        return lotteryResult;
+    }
+
+    public void setLotteryResult(LotteryResult lotteryResult) {
+        this.lotteryResult = lotteryResult;
+    }
+
+    public int getEnd() {
+        return end;
+    }
+
+    public void setEnd(int end) {
+        this.end = end;
+    }
+
+    public int getCalFlag() {
+        return calFlag;
+    }
+
+    public void setCalFlag(int calFlag) {
+        this.calFlag = calFlag;
+    }
+
+    public int getPrize() {
+        return prize;
+    }
+
+    public void setPrize(int prize) {
+        this.prize = prize;
+    }
+
+    public Double getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(Double bonus) {
+        this.bonus = bonus;
     }
 }

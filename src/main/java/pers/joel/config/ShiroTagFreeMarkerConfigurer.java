@@ -26,4 +26,6 @@ public class ShiroTagFreeMarkerConfigurer implements InitializingBean {
         // 加上这句后，可以在页面上用${context.contextPath}获取contextPath
         resolver.setRequestContextAttribute("context");
     }
+
+
 }

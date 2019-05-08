@@ -44,7 +44,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/order/**", "authc");
         filterChainDefinitionMap.put("/templates/**", "anon");
         filterChainDefinitionMap.put("/static/**", "anon");
-        filterChainDefinitionMap.put("/userCenter/**", "authc");
+        filterChainDefinitionMap.put("/userCenter/**", "user");
         shiroFilter.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilter;
     }

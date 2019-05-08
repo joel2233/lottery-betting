@@ -16,4 +16,6 @@ public interface UserManager{
     void updateUserChecked(int uid);
 
     void updateUserInfo(int uid, String uname, String pwd);
+
+//    void updateUserMoney(int uid, Double money);
 }

@@ -1,13 +1,16 @@
-*{padding: 0;margin: 0;font-size: 14px;font-family: Consolas;}
+*{padding: 0;margin: 0;font-size: 14px;font-family: Consolas;user-select: none;}
+
 
 @media (min-width: 1200px){
     .container {
-        max-width: 1500px;
+        max-width: 1400px;
     }
 }
+.left-container{width: 72%;border-right: 1px solid #f0f0f0;}
+.right-container{width: 25%;margin-left:1%;}
 
 html{position: relative;}
-body{margin-bottom: 120px;}
+body{margin-bottom: 120px;background-color: #e0e0e0;}
 a{text-decoration: none;color:#444;}
 li{list-style: none;}
 ruby{font-weight: bold;}
@@ -16,11 +19,12 @@ rt{font-size: 12px;color:blue;}
 .fright{float: right;}
 .clearfix:after{content: "";display: table;clear:both;}
 
+.center{margin: 0 auto;}
 .tcenter{text-align: center;}
 .hide{display: none;}
 
-.main{margin-top: 80px;}
-.main .container{margin-bottom: 200px;}
+.main{margin-top: 70px;}
+.main .container{padding-bottom: 120px;background-color: #fff;padding-top: 20px;}
 .main-left{width:10%;float:left;margin-top: 30px;line-height: 30px;text-indent: 1em;}
 .main-content li{display: inline-block;line-height: 30px;}
 .main-left li a,.main-content li a{display:inline-block;width:120px;height: 30px;text-align: center;border:1px solid #f0f0f0;}
@@ -30,7 +34,7 @@ rt{font-size: 12px;color:blue;}
 
 .li-on{background-color: #e5e5e5;}
 
-.info{width:90%;margin: 28px;min-height: 750px;}
+.info{width:100%;margin: 28px;min-height: 750px;}
 .info .item{height: 80px;}
 .info span{display: inline-block;text-align: center;}
 .info .item-no,.info .item-type{width:10%;}
@@ -42,7 +46,7 @@ rt{font-size: 12px;color:blue;}
 .item:hover{background-color: #e5e5e5;}
 
 /*-- 体彩投注区样式开始  --*/
-.bet-zone{z-index:20;position:fixed;bottom: 0;width:80%;height:auto;border: 1px solid #8c8c8c;box-shadow: 10px 10px 10px 2px #8c8c8c;padding: 15px;background-color: aliceblue;}
+.bet-zone{width:80%;height:auto;border: 1px solid #8c8c8c;box-shadow: -10px -10px 10px -2px #8c8c8c;padding: 15px;background-color: aliceblue;}
 .bet-zone .topZone{line-height: 50px;height: 50px;margin-bottom: 15px;border-bottom: 1px solid #c0c0c0;}
 .bet-zone .bet-select{display:inline-block;border: 1px solid cornflowerblue;width: 80px;height: 40px;text-align: center;line-height: 40px;margin-right: 50px;}
 .bet-zone #selectedCount{color:red;font-weight: bold;font-size: 18px;}
@@ -71,7 +75,7 @@ rt{font-size: 12px;color:blue;}
     width: 130px;
     vertical-align: middle;
 }
-.bei-jian,.bei-jia{cursor:pointer;display: inline-block;width:30px;height: 30px;line-height: 30px;text-align: center;border:1px solid #b0b0b0;color:#b0b0b0;font-size: 30px;}
+.bei-jian,.bei-jia{cursor:pointer;display: inline-block;width:30px;height: 30px;line-height: 25px;text-align: center;border:1px solid #b0b0b0;color:#b0b0b0;font-size: 30px;}
 .bei-show{
     display: inline-block;
     width: 42px;
@@ -127,18 +131,71 @@ rt{font-size: 12px;color:blue;}
 .red{color:red;}
 .blue{color:blue;}
 .gray{color:#a5a5a5;}
-
+.btn{cursor:pointer;}
 /* 大乐透页面样式结束 */
 
 
 /*用户管理界面样式开始 */
 .leftnav{border:1px solid #f0f0f0;width: 10%;min-width: 92px;background-color: #fbfbfb;}
-.leftnav .nav-title{height: 40px;line-height: 40px;border-top:1px dotted;width: 100%;text-align: center;}
-.leftnav .nav-item{height: 40px;line-height: 40px;width: 100%;text-align: center;}
+.leftnav .nav-title{height: 40px;line-height: 40px;border-top:1px dotted;width: 100%;text-align: center;font-weight: bold;}
+.leftnav .nav-item{height: 40px;line-height: 40px;width: 100%;text-align: center;font-size: 12px;}
 
-.right-container{width:85%;margin-left: 1%;}
-.right-container .rTitle{width:100%;border:1px solid #e5e5e5;border-radius: 3px;height: 30px;background-color: #fbfbfb;line-height:30px;font-weight:bold;text-indent: 2em;}
-.right-container .rContent{width:100%;border:1px solid #e5e5e5;border-radius: 3px;min-height: 500px;background-color: #fbfbfb;margin: 20px 0;padding: 2em;}
+.r-container{width:85%;margin-left: 1%;}
+.r-container .rTitle{width:100%;border:1px solid #e5e5e5;border-radius: 3px;height: 30px;background-color: #fbfbfb;line-height:30px;font-weight:bold;text-indent: 2em;}
+.r-container .rContent{width:100%;border:1px solid #e5e5e5;border-radius: 3px;min-height: 500px;background-color: #fbfbfb;margin: 20px 0;padding: 2em;}
 
 
 /* 用户管理界面样式结束 */
+
+/* Tab style */
+/* ===========
+		   Tab Styling */
+.tab-group {
+    border: 1px solid #eee;
+    margin-top: 5em;
+    border-radius: 0 0 10px 10px;
+}
+.tab-group section {
+    opacity: 0;
+    height: 0;
+    padding: 0 1em;
+    overflow: hidden;
+    transition: opacity 0.4s ease, height 0.4s ease;
+}
+.tab-group section.active {
+    opacity: 1;
+    height: auto;
+    overflow: visible;
+}
+
+.tab-nav {
+    list-style: none;
+    margin: -2.5em -1px 0 0;
+    padding: 0;
+    height: 2.5em;
+    overflow: hidden;
+}
+.tab-nav li {
+    display: inline;
+}
+.tab-nav li a {
+    top: 1px;
+    position: relative;
+    display: block;
+    float: left;
+    border-radius: 10px 10px 0 0;
+    background: #eee;
+    line-height: 2em;
+    padding: 0 1em;
+    text-decoration: none;
+    color: grey;
+    margin-top: .5em;
+    margin-right: 1px;
+    transition: background .2s ease, line-height .2s ease, margin .2s ease;
+}
+.tab-nav li.active a {
+    background: #6EB590;
+    color: white;
+    line-height: 2.5em;
+    margin-top: 0;
+}

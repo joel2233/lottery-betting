@@ -11,6 +11,7 @@ public class UcUser implements Serializable {
     private String phone;
     private String password;
     private String verifyCode;
+    private Double money;
     private int checked;
     private LocalDateTime registerTime;
     private int bUser;
@@ -81,5 +82,13 @@ public class UcUser implements Serializable {
 
     public void setRegisterTime(LocalDateTime registerTime) {
         this.registerTime = registerTime;
+    }
+
+    public Double getMoney() {
+        return money;
+    }
+
+    public void setMoney(Double money) {
+        this.money = money;
     }
 }

@@ -60,4 +60,10 @@ public class UcUserDaoImpl extends GenericDaoImpl<UcUser> implements UcUserDao{
         update(sql);
     }
 
+    @Override
+    public void updateUserMoney(int uid, Double money) {
+        String sql = "update uc_users u set money = " + money + " where u.`uid` = " + uid;
+        update(sql);
+    }
+
 }

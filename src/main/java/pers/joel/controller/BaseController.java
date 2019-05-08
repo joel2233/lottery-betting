@@ -2,6 +2,7 @@ package pers.joel.controller;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,9 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import pers.joel.common.utils.JSONUtil;
+import pers.joel.common.utils.SecurityUtil;
 import pers.joel.models.UcUser;
 import pers.joel.services.UserManager;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
@@ -118,6 +121,23 @@ public abstract class BaseController{
     protected HttpServletRequest getRequest() {
 
         return ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+    }
+
+    /**
+     * 刷新缓存
+     */
+    protected void updateCache(){
+        UcUser u = getCurrentUser();
+        boolean rememberMe = false;
+        for (Cookie cookie : getRequest().getCookies()) {
+            if ("rememberMe".equals(cookie.getName())) {
+                rememberMe = true;
+            }
+        }
+        UsernamePasswordToken token = new UsernamePasswordToken(u.getPhone(), SecurityUtil.aesDecrypt(u.getPassword(),SecurityUtil.AESPASSWORD),rememberMe);
+
+        SecurityUtils.getSubject().logout();
+        SecurityUtils.getSubject().login(token);
     }
 
     /**
